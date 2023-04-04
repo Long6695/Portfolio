@@ -2,14 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark {
+  @apply bg-gray-800 text-gray-200
+}
+
+.light {
+  @apply bg-slate-300 text-black
+}
+
 .layout {
-  @apply container bg-gray-400 mx-auto h-screen text-white;
+  @apply container bg-amber-200 mx-auto h-screen overflow-y-hidden;
+}
+
+.section-layout {
+  @apply w-full h-screen;
+}
+
+.section-wrapper {
+  @apply h-[95%] w-full mt-5 rounded-xl;
 }
 
 .active {
-  @apply border-b-2 border-red-200;
+  @apply border-b-2 border-orange-400;
 }
 
 .deactive {
   @apply border-0;
+}
+
+button:hover {
+  @apply bg-orange-400
 }

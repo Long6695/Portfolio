@@ -1,8 +1,9 @@
 import React from 'react'
+import SectionWrapper from '../section-wrapper'
 
 const ContactSection = () => {
   return (
-    <div>ContactSection</div>
+    <SectionWrapper>ContactSection</SectionWrapper>
   )
 }
 
