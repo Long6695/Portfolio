@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import SectionWrapper from "../section-wrapper";
 
 const WorksSection = () => {
-  return (
-    <div>WorksSection</div>
-  )
-}
+  return <SectionWrapper>WorksSection</SectionWrapper>;
+};
 
-export default WorksSection
+export default WorksSection;
