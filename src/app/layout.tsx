@@ -1,12 +1,5 @@
+import { roboto } from "./fonts";
 import "./globals.css";
-import { Roboto } from "next/font/google";
-
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  style: ["normal"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata = {
   title: "Portfolio",
