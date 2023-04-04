@@ -1,91 +1,88 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
+import ContactSection from "@/components/contact";
+import IntroduceSection from "@/components/introduce";
+import WorksSection from "@/components/works";
+import React, { useRef, useState } from "react";
+import cn from "classnames";
+type MenuType = {
+  id: number;
+  label: string;
+  value: string;
+};
+const MENUS: MenuType[] = [
+  {
+    id: 1,
+    label: "Introduce",
+    value: "introduce",
+  },
+  {
+    id: 2,
+    label: "Works",
+    value: "works",
+  },
+  {
+    id: 3,
+    label: "Contact",
+    value: "contact",
+  },
+];
 
-const inter = Inter({ subsets: ['latin'] })
+const MainPage = () => {
+  const section1 = useRef<HTMLDivElement>(null);
+  const section2 = useRef<HTMLDivElement>(null);
+  const section3 = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(1);
 
-export default function Home() {
+  const sectionMap = {
+    1: section1,
+    2: section2,
+    3: section3,
+  };
+
+  const scrollToView = (num: keyof typeof sectionMap) => {
+    sectionMap[num]?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  console.log(active);
+  const handleScroll = (item: MenuType) => {
+    scrollToView(item.id as keyof typeof sectionMap);
+    setActive(item.id);
+  };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+      <div className="fixed left-0 right-0 container m-auto flex justify-center gap-10">
+        <ul className="flex gap-10">
+          {MENUS.map((item) => (
+            <li
+              key={item.value}
+              className={cn({
+                active: item.id === active,
+                deactive: item.id !== active,
+              })}
+              onClick={() => handleScroll(item)}
+            >
+              <p
+                className={cn({
+                  "text-white": item.id === active,
+                  "text-gray-500": item.id !== active,
+                })}
+              >
+                {item.label}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
+      <div className="bg-black h-full p-7" ref={section1}>
+        <IntroduceSection />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="bg-red-500 h-full p-7" ref={section2}>
+        <WorksSection />
       </div>
-    </main>
-  )
-}
+      <div className="bg-blue-500 h-full p-7" ref={section3}>
+        <ContactSection />
+      </div>
+    </>
+  );
+};
+
+export default MainPage;
