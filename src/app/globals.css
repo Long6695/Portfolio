@@ -15,11 +15,11 @@
 }
 
 .section-layout {
-  @apply w-full h-screen;
+  @apply w-full h-screen px-4;
 }
 
 .section-wrapper {
-  @apply h-[95%] w-full mt-5 rounded-xl;
+  @apply h-[90%] w-full rounded-xl p-4;
 }
 
 .active {
@@ -32,4 +32,16 @@
 
 button:hover {
   @apply bg-orange-400
+}
+
+@media (max-width: 800px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 801px) {
+  .desktop-hidden {
+    display: none;
+  }
 }
