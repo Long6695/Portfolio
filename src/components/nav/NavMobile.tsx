@@ -79,7 +79,7 @@ const NavMobile = ({
           </div>
         </div>
         <div
-          onClick={() => setIsOpen(false)}
+          onClick={handleToggleMenu}
           className="fixed top-0 bottom-0 right-0 w-1/2 p-4"
         />
       </>

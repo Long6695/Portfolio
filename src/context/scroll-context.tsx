@@ -4,12 +4,14 @@ interface ScrollContextType {
   number: number;
   decreaseNumber: () => void;
   increaseNumber: () => void;
+  setCurrentNumberScroll: (id: number) => void;
 }
 
 const defaultScrollContext: ScrollContextType = {
   number: 1,
   decreaseNumber: () => {},
   increaseNumber: () => {},
+  setCurrentNumberScroll: () => {},
 }
 
 export const ScrollContext =
@@ -26,10 +28,15 @@ const ScrollContextProvider = ({ children }: { children: React.ReactNode }) => {
     setNumber((prev) => prev - 1);
   };
 
+  const setCurrentNumberScroll = (id: number) => {
+    setNumber(id)
+  }
+
   const scrollContextValue = {
     decreaseNumber,
     increaseNumber,
     number,
+    setCurrentNumberScroll,
   };
 
   return (
