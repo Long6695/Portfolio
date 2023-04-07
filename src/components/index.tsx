@@ -1,4 +1,12 @@
-import React, { useContext, useRef, useState } from "react";
+"use client";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 import { ScrollContext } from "@/context/scroll-context";
 import Nav from "@/components/nav";
@@ -10,23 +18,39 @@ const PortfolioPage = () => {
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const projectSectionRef = useRef<HTMLDivElement>(null);
   const contactSectionRef = useRef<HTMLDivElement>(null);
-  const sectionRefs = [aboutSectionRef, projectSectionRef, contactSectionRef];
+  const sectionRefs = useMemo(
+    () => [aboutSectionRef, projectSectionRef, contactSectionRef],
+    []
+  );
   const [activeSection, setActiveSection] = useState(1);
-  const { number, decreaseNumber, increaseNumber } = useContext(ScrollContext);
+  const { number, decreaseNumber, increaseNumber, setCurrentNumberScroll } =
+    useContext(ScrollContext);
   const isMaxSection = number === sectionRefs.length;
   const isMinSection = number === 1;
   const isBetweenSections = number > 1 && number < sectionRefs.length;
 
-  const scrollToSection = (sectionNumber: number) => {
-    sectionRefs[sectionNumber - 1]?.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  const scrollToSection = useCallback(
+    (sectionNumber: number) => {
+      sectionRefs[sectionNumber - 1]?.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    },
+    [sectionRefs]
+  );
 
-  const handleSectionChange = (sectionNumber: number) => {
-    scrollToSection(sectionNumber);
-    setActiveSection(sectionNumber);
-  };
+  const handleSectionChange = useCallback(
+    (sectionNumber: number) => {
+      scrollToSection(sectionNumber);
+      setActiveSection(sectionNumber);
+      setCurrentNumberScroll(sectionNumber);
+    },
+    [scrollToSection, setCurrentNumberScroll]
+  );
+
+  useEffect(() => {
+    scrollToSection(activeSection);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleScrollDownButton = () => {
     increaseNumber();
