@@ -11,7 +11,7 @@ import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 import { ScrollContext } from "@/context/scroll-context";
 import Nav from "@/components/nav";
 import AboutSection from "@/components/about";
-import WorksSection from "@/components/works";
+import ProjectSection from "@/components/projects";
 import ContactSection from "@/components/contact";
 
 const PortfolioPage = () => {
@@ -69,7 +69,7 @@ const PortfolioPage = () => {
         <AboutSection />
       </div>
       <div className="section-layout pt-16" ref={projectSectionRef}>
-        <WorksSection />
+        <ProjectSection />
       </div>
       <div className="section-layout pt-16" ref={contactSectionRef}>
         <ContactSection />

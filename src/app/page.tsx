@@ -1,4 +1,5 @@
 "use client";
+import "keen-slider/keen-slider.min.css";
 import React from "react";
 import ThemeContextProvider from "@/context/theme-context";
 import ScrollContextProvider from "@/context/scroll-context";

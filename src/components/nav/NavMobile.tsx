@@ -87,7 +87,7 @@ const NavMobile = ({
   };
 
   return (
-    <div className="fixed left-0 right-0 top-6 desktop-hidden">
+    <div className="fixed left-0 right-0 top-6 desktop-hidden z-50">
       {isOpen && renderMenu()}
       <div className="px-6">
         <div className="flex justify-end items-center">
