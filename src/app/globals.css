@@ -11,7 +11,7 @@
 }
 
 .layout {
-  @apply container bg-amber-200 mx-auto h-screen overflow-y-hidden;
+  @apply container bg-amber-200 mx-auto;
 }
 
 .section-layout {

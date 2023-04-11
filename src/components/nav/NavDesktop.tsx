@@ -19,7 +19,7 @@ const NavDesktop = ({
 }) => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
-    <div className="mobile-hidden fixed left-0 right-0 top-2 container m-auto flex items-center justify-center gap-10">
+    <div className="z-10 mobile-hidden fixed left-0 right-0 top-2 container m-auto flex items-center justify-center gap-10">
       <div className="flex items-center w-full h-10">
         <ul className="relative flex justify-center gap-10 w-full">
           {data.map((item) => (
