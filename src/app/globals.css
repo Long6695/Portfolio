@@ -7,7 +7,7 @@
 }
 
 .light {
-  @apply bg-slate-300 text-black
+  @apply bg-zinc-200 text-black
 }
 
 .layout {
@@ -52,10 +52,11 @@ button:hover {
   align-items: center;
   height: 100%;
   overflow: hidden;
+  background-color: red;
 }
 .scene {
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 200px;
   perspective: 1000px;
   position: relative;
 }
@@ -73,4 +74,20 @@ button:hover {
   left: 10px;
   height: 200px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+input, textarea {
+  border: 1px solid orange;
+  border-radius: 10px;
+  padding: 0px 10px;
+  outline: none;
+}
+
+input {
+  min-height: 40px;
+}
+
+textarea {
+  resize: none;
+  height: 100%;
 }
