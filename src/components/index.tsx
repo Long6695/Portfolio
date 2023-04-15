@@ -2,7 +2,6 @@
 import React, {
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -46,11 +45,6 @@ const PortfolioPage = () => {
     },
     [scrollToSection, setCurrentNumberScroll]
   );
-
-  useEffect(() => {
-    scrollToSection(activeSection);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleScrollDownButton = () => {
     increaseNumber();

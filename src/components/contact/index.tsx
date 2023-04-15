@@ -19,6 +19,7 @@ const ContactSection = () => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(form)
   };
   const onChangeInput = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
