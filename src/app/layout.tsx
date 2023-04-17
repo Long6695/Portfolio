@@ -1,3 +1,4 @@
+import Nav from "@/components/nav";
 import { roboto } from "./fonts";
 import "./globals.css";
 
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={roboto.className}>
-      <body className="layout">{children}</body>
+      <body>
+        <div className="container mx-auto">
+          <Nav />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

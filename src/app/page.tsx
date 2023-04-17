@@ -1,20 +1,17 @@
-"use client";
-import "keen-slider/keen-slider.min.css";
 import React from "react";
-import ThemeContextProvider from "@/context/theme-context";
-import ScrollContextProvider from "@/context/scroll-context";
-import PortfolioPage from "@/components";
-import {ParallaxProvider} from 'react-scroll-parallax';
+import AboutSection from "@/components/about";
+import Stat from "@/components/stat";
+import Skills from "@/components/skills";
 
 const MainPage = () => {
   return (
-    <ParallaxProvider>
-    <ThemeContextProvider>
-      <ScrollContextProvider>
-        <PortfolioPage />
-      </ScrollContextProvider>
-    </ThemeContextProvider>
-    </ParallaxProvider>
+    <div className="flex flex-col gap-10">
+      <AboutSection />
+      <div className="flex justify-center">
+        <Stat />
+      </div>
+      <Skills />
+    </div>
   );
 };
 
