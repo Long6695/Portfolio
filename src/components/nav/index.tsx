@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import { space_mono } from "@/app/fonts";
 import { AiOutlineDownload } from "react-icons/ai";
 import { VscListSelection } from "react-icons/vsc";
 import SwitchTheme from "./SwitchTheme";
 import { MENUS } from "@/constants/nav";
+import Link from "next/link";
 
 const Nav = () => {
   const handleDownloadCV = () => {};
@@ -21,18 +22,20 @@ const Nav = () => {
           >
             {MENUS.map((item) => (
               <li key={item.value} className={`${space_mono.className}`}>
-                <a>{item.label}</a>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">LongThai</a>
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
+          LongThai
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {MENUS.map((item) => (
             <li key={item.value} className={`${space_mono.className}`}>
-              <a>{item.label}</a>
+              <Link href={item.href}>{item.label}</Link>
             </li>
           ))}
         </ul>
