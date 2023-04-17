@@ -1,20 +1,9 @@
-import React, { HTMLProps, InputHTMLAttributes, useContext } from "react";
-import cn from "classnames";
-import { ThemeContext } from "@/context/theme-context";
+import React, { InputHTMLAttributes } from "react";
 
 interface Props extends InputHTMLAttributes<HTMLTextAreaElement> {}
 
 const UiTextarea = (props: Props) => {
-  const { darkMode } = useContext(ThemeContext);
-  return (
-    <textarea
-      className={cn("w-full", {
-        dark: darkMode,
-        light: !darkMode,
-      })}
-      {...props}
-    />
-  );
+  return <textarea className="w-full" {...props} />;
 };
 
 export default UiTextarea;

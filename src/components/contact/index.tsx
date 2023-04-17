@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import SectionWrapper from "../section-wrapper";
 import { space_mono } from "@/app/fonts";
 import { SiMinutemailer } from "react-icons/si";
@@ -9,27 +9,20 @@ import {
   AiOutlineGithub,
   AiFillLinkedin,
 } from "react-icons/ai";
+import { useForm } from "./useForm";
 
 const ContactSection = () => {
-  const [form, setForm] = useState({
-    name: "",
+  const { form, handleChange } = useForm({
     email: "",
+    name: "",
     message: "",
   });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form)
+    console.log(form);
   };
-  const onChangeInput = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+
   return (
     <SectionWrapper>
       <div className="relative flex flex-col h-full">
@@ -44,7 +37,7 @@ const ContactSection = () => {
             <label htmlFor="name">Name</label>
             <UiInput
               name="name"
-              onChange={onChangeInput}
+              onChange={handleChange}
               value={form.name}
               id="name"
             />
@@ -53,7 +46,7 @@ const ContactSection = () => {
             <label htmlFor="email">Email</label>
             <UiInput
               name="email"
-              onChange={onChangeInput}
+              onChange={handleChange}
               value={form.email}
               id="email"
             />
@@ -63,7 +56,7 @@ const ContactSection = () => {
               Message
               <UiTextarea
                 name="message"
-                onChange={onChangeInput}
+                onChange={handleChange}
                 value={form.message}
                 id="message"
               />
